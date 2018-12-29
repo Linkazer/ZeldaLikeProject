@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4331948438883362}
   - component: {fileID: 212070636510554586}
   - component: {fileID: 60886643055205774}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: New Sprite (3)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4255974221482216}
   - component: {fileID: 212627616746849788}
   - component: {fileID: 60032657490125892}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: New Sprite (2)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4839560396758440}
   - component: {fileID: 212533033631860556}
   - component: {fileID: 60090510093071828}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: New Sprite (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4580252729233892}
   - component: {fileID: 212394206372652062}
   - component: {fileID: 60862533344238390}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: New Sprite
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4627674681005172}
   - component: {fileID: 212900625546836256}
   - component: {fileID: 60914082764957762}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: New Sprite (4)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}

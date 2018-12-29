@@ -12,6 +12,7 @@ public class FieldOfViewGarde : MonoBehaviour {
 
     public LayerMask obstacleMask, playerMask, creatureMask;
 
+
     private void FixedUpdate()
     {
         FindVisiblePlayer();

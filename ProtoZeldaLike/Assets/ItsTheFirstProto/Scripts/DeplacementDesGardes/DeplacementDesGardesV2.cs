@@ -29,6 +29,10 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
     private bool isAfraid = false;
     private bool isTargetSeen = false;
 
+    Vector3[] path;
+    int targetIndex;
+    public Transform target;
+
     void Start()
     {
         nombreDePositionDuTour = tourDeGarde.Length;
@@ -40,7 +44,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         rigiBoy = GetComponent<Rigidbody2D>();
         fov = GetComponent<FieldOfViewGarde>();
 
-        lastKnownPosition = transform.position;
+        StartCoroutine(searchPath());
     }
 
     // Update is called once per frame
@@ -99,16 +103,20 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         {
             speed = 0;
         }
-
-        if (Vector2.Distance(lastKnownPosition, currentPosition) > walkDistance)
-        {
-            velocity = new Vector2(lastKnownPosition.x - currentPosition.x, lastKnownPosition.y - currentPosition.y).normalized * speed;
-        }
-        else
-        {
-            velocity = Vector2.zero;
-        }
 	}
+
+    Vector2 beforeLastPosition = Vector2.zero;
+
+    IEnumerator searchPath()
+    {
+        if(beforeLastPosition != lastKnownPosition)
+        {
+            PathRequestManager.RequestPath(transform.position, lastKnownPosition, OnPathFound);
+        }
+        beforeLastPosition = lastKnownPosition;
+        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(searchPath());
+    }
 
     void faitSaRonde()
     {
@@ -139,13 +147,77 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         canMove = true;
     }
 
+   
+
+    // Pathfinding
+
+    public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
+    {
+        if (pathSuccessful)
+        {
+            path = newPath;
+            targetIndex = 0;
+            StopCoroutine("FollowPath");
+            StartCoroutine("FollowPath");
+        }
+    }
+
+    IEnumerator FollowPath()
+    {
+        Vector3 currentWaypoint = path[0];
+        while (true)
+        {
+            if (Vector2.Distance(currentWaypoint, currentPosition) <= 0.5f)
+            {
+                targetIndex++;
+                if (targetIndex >= path.Length)
+                {
+                    yield break;
+                }
+                currentWaypoint = path[targetIndex];
+                velocity = Vector2.zero;
+            }
+            else if (Vector2.Distance(lastKnownPosition, currentPosition) > walkDistance)
+            {
+                velocity = new Vector2(currentWaypoint.x - transform.position.x, currentWaypoint.y - transform.position.y).normalized * speed;
+            }
+            else
+            {
+                velocity = Vector2.zero;
+            }
+
+            //transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            
+            yield return null;
+
+        }
+    }
+
     private void FixedUpdate()
     {
         rigiBoy.MovePosition(rigiBoy.position + velocity * Time.fixedDeltaTime);
     }
 
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
+        if (path != null)
+        {
+            for (int i = targetIndex; i < path.Length; i++)
+            {
+                Gizmos.color = Color.black;
+                Gizmos.DrawCube(path[i], Vector3.one);
+
+                if (i == targetIndex)
+                {
+                    Gizmos.DrawLine(transform.position, path[i]);
+                }
+                else
+                {
+                    Gizmos.DrawLine(path[i - 1], path[i]);
+                }
+            }
+        }
+
         Color newColor = Color.blue;
         newColor.a = 0.2f;
         Gizmos.color = newColor;

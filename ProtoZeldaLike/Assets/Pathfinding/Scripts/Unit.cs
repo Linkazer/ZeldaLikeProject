@@ -10,7 +10,10 @@ public class Unit : MonoBehaviour {
 	int targetIndex;
 
 	void Start() {
-		PathRequestManager.RequestPath(transform.position,target.position, OnPathFound);
+        if (target != null)
+        {
+            PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+        }
 	}
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
