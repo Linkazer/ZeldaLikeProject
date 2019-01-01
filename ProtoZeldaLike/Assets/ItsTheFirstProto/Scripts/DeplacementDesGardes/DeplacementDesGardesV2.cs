@@ -28,6 +28,10 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
     public bool eardSomething = false;
     private bool isAfraid = false;
     private bool isTargetSeen = false;
+    public bool isAgressive = true;
+    private bool sawPlayer = false;
+
+    public Transform armyLocation;
 
     Vector3[] path;
     int targetIndex;
@@ -65,11 +69,18 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
 
             canMove = true;
         }
-        else if (fov.visiblePlayer.Count > 0 && !isAfraid)
+        else if (fov.visiblePlayer.Count > 0 && !isAfraid && !sawPlayer)
         {
             speed = normalSpeed + bonusSpeed;
-            lastKnownPosition = fov.visiblePlayer[0].position;
-            isTargetSeen = true;
+            if (isAgressive)
+            {
+                lastKnownPosition = fov.visiblePlayer[0].position;
+                isTargetSeen = true;
+            }
+            else
+            {
+                sawPlayer = true;
+            }
         }
         else if (eardSomething && !isAfraid)
         {
@@ -83,9 +94,14 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         {
             if (Vector2.Distance(lastKnownPosition, currentPosition) <= walkDistance)
             {
-                isTargetSeen = false;
                 StartCoroutine(waitHere(5));
+                isTargetSeen = false;
             }
+        }
+        else if(sawPlayer)
+        {
+            StartCoroutine(waitHere(2));
+            lastKnownPosition = armyLocation.position;
         }
         else if (canMove)
         {
@@ -195,7 +211,10 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        rigiBoy.MovePosition(rigiBoy.position + velocity * Time.fixedDeltaTime);
+        if (canMove)
+        {
+            rigiBoy.MovePosition(rigiBoy.position + velocity * Time.fixedDeltaTime);
+        }
     }
 
     public void OnDrawGizmos()

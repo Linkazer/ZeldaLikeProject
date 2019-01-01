@@ -1,5 +1,4 @@
 sceneSetups:
-- path: D:/Rubika/Pathfinding-master/Pathfinding-master/Episode 05 - units/Assets/Pathfinding
-    Test.unity
+- path: "Assets/ItsTheFirstProto/LaSc\xE8neDuProto.unity"
   isLoaded: 1
   isActive: 1
