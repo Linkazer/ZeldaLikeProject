@@ -37,6 +37,9 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
     int targetIndex;
     public Transform target;
 
+    private float attackCooldown;
+    private float maxAttackCooldown = 2f;
+
     void Start()
     {
         nombreDePositionDuTour = tourDeGarde.Length;
@@ -54,7 +57,13 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         currentPosition = new Vector2(transform.position.x, transform.position.y);
-        if (fov.visibleCreature.Count > 0 && !isAfraid)
+
+        if (attackCooldown > 0)
+        {
+            attackCooldown-=Time.deltaTime;
+        }
+
+        if (fov.visibleCreature.Count > 0 && !isAfraid) //Vérifie si une créature a été vu
         {
             isAfraid = true;
             speed = normalSpeed + bonusSpeed;
@@ -69,7 +78,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
 
             canMove = true;
         }
-        else if (fov.visiblePlayer.Count > 0 && !isAfraid && !sawPlayer)
+        else if (fov.visiblePlayer.Count > 0 && !isAfraid && !sawPlayer) //Vérifie si un joueur a été vu
         {
             speed = normalSpeed + bonusSpeed;
             if (isAgressive)
@@ -81,8 +90,15 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
             {
                 sawPlayer = true;
             }
+
+            if(Vector2.Distance(lastKnownPosition, currentPosition) <= walkDistance && attackCooldown <= 0)
+            {
+                velocity = Vector3.zero;
+                Attack();
+                attackCooldown = maxAttackCooldown;
+            }
         }
-        else if (eardSomething && !isAfraid)
+        else if (eardSomething && !isAfraid) //Vérifie si le garde a entendu quelque chose
         {
             speed = normalSpeed;
             if(Vector2.Distance(lastKnownPosition, currentPosition) <= walkDistance)
@@ -90,7 +106,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
                 eardSomething = false;
             }
         }
-        else if (isTargetSeen)
+        else if (isTargetSeen) //Vérifie qu'il voit bien un joueur
         {
             if (Vector2.Distance(lastKnownPosition, currentPosition) <= walkDistance)
             {
@@ -98,12 +114,12 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
                 isTargetSeen = false;
             }
         }
-        else if(sawPlayer)
+        else if(sawPlayer) //Vérifie s'il a vue un joueur
         {
             StartCoroutine(waitHere(2));
             lastKnownPosition = armyLocation.position;
         }
-        else if (canMove)
+        else if (canMove) //Vérifie que le garde peut bouger
         {
             if (isAfraid)
             {
@@ -123,7 +139,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
 
     Vector2 beforeLastPosition = Vector2.zero;
 
-    IEnumerator searchPath()
+    IEnumerator searchPath() //Demande au Script de chercher un chemin
     {
         if(beforeLastPosition != lastKnownPosition)
         {
@@ -134,7 +150,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         StartCoroutine(searchPath());
     }
 
-    void faitSaRonde()
+    void faitSaRonde() //Fonction permettant au garde de faire sa ronde
     {
         if (Vector2.Distance(lastKnownPosition, currentPosition) <= walkDistance)
         {
@@ -156,7 +172,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         lastKnownPosition = tourDeGarde[actuelPositionDuTour].position;
     }
 
-    IEnumerator waitHere(float secondToWait)
+    IEnumerator waitHere(float secondToWait) //Fait attendre le garde là où il est
     {
         canMove = false;
         yield return new WaitForSeconds(secondToWait);
@@ -167,7 +183,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
 
     // Pathfinding
 
-    public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
+    public void OnPathFound(Vector3[] newPath, bool pathSuccessful) //Vérifie qu'un chemin existe
     {
         if (pathSuccessful)
         {
@@ -178,7 +194,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         }
     }
 
-    IEnumerator FollowPath()
+    IEnumerator FollowPath() //Fonction permettant de mettre à jour la position du joueur au niveau de son chemin
     {
         Vector3 currentWaypoint = path[0];
         while (true)
@@ -209,13 +225,22 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         }
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate() //Fait déplacer le personnage
     {
         if (canMove)
         {
             rigiBoy.MovePosition(rigiBoy.position + velocity * Time.fixedDeltaTime);
         }
     }
+
+    public GameObject weapon;
+
+    void Attack()
+    {
+        weapon.SetActive(true);
+        weapon.transform.up = lastKnownPosition - currentPosition;
+    }
+    
 
     public void OnDrawGizmos()
     {

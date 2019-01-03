@@ -8,6 +8,8 @@ TagManager:
   - Obstacles
   - Ennemis
   - Wall
+  - Health
+  - Weapon
   layers:
   - Default
   - TransparentFX
