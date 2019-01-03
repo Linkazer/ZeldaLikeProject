@@ -178,7 +178,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4474159747129934, guid: 54cf65c35771dc04ba3d746b7fc19583, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: tourDeGarde.Array.data[0]
@@ -312,7 +312,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4309511999985704, guid: 0a0a05e941c9ad14aba16062822f4aea, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0a05e941c9ad14aba16062822f4aea, type: 2}
@@ -620,7 +620,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4142375348210176, guid: 4a11b5a0749dc2742ab68591c4846a6b, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a11b5a0749dc2742ab68591c4846a6b, type: 2}
@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 369241942}
   - component: {fileID: 369241941}
   - component: {fileID: 369241940}
+  - component: {fileID: 369241943}
   m_Layer: 12
   m_Name: Scorpide
   m_TagString: Ennemis
@@ -727,10 +728,22 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 41.32, y: 1.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1912377651}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &369241943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369241939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94b424f2163038439e01a4f157f6043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &372494177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,7 +1146,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4529339595692570, guid: 9f2554f4b002b404abc1090898df7aeb, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f2554f4b002b404abc1090898df7aeb, type: 2}
@@ -1175,7 +1188,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4572094062737842, guid: 1437ed7f363806943bc8e2917671963d, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 212222536726746776, guid: 1437ed7f363806943bc8e2917671963d,
         type: 2}
@@ -1227,7 +1240,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4509761241511632, guid: eb041936f9c11a84b83b0da2d12356d9, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114829410695881164, guid: eb041936f9c11a84b83b0da2d12356d9,
         type: 2}
@@ -1448,7 +1461,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4500676005938480, guid: 68d3b45fef509464aaa9ac4321743cf1, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68d3b45fef509464aaa9ac4321743cf1, type: 2}
@@ -1579,7 +1592,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4285636563891474, guid: 4f471b08f33214a46a43ce72aa1f3bf2, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1715665545337564, guid: 4f471b08f33214a46a43ce72aa1f3bf2, type: 2}
       propertyPath: m_Name
@@ -2401,6 +2414,71 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1906349600}
   m_Mesh: {fileID: 0}
+--- !u!1 &1912377650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1912377651}
+  - component: {fileID: 1912377653}
+  - component: {fileID: 1912377652}
+  m_Layer: 12
+  m_Name: Enfuissement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1912377651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1912377650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 369241942}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1912377652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1912377650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc174250c03aa494c8421aaefa266e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAsleep: 1
+  asleepSprite: {fileID: 0}
+  wakeUpSprite: {fileID: 0}
+  attackDmg: 0
+  speed: 0
+  target: {fileID: 0}
+  weapon: {fileID: 0}
+  walkDistance: 0
+  canReachTarget: []
+--- !u!58 &1912377653
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1912377650}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
 --- !u!1 &1968909366
 GameObject:
   m_ObjectHideFlags: 0
