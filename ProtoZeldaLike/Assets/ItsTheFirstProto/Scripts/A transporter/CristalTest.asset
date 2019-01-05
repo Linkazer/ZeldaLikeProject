@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342ccfd7fcaba0443bea35439f1fdb06, type: 3}
+  m_Name: CristalTest
+  m_EditorClassIdentifier: 
+  name: CristalTest
+  icon: {fileID: 21300000, guid: 4d730560bb5771f42abd0e097f33fd88, type: 3}
+  descripttion: 'C''est le cristal du test
+
+    Les stats ont pas d''importance'
+  attack: 0
+  defense: 0
+  agility: 0
+  life: 0
+  price: 0
+  type: 0

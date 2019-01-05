@@ -6,6 +6,7 @@ public class MakeDamageScript : MonoBehaviour {
 
     public bool isEnemy = true;
     public float dmg;
+    public bool doesHitWall = false;
 
     // Use this for initialization
 
