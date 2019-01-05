@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "Assets/ItsTheFirstProto/LaSc\xE8neDuProto.unity"
+- path: Assets/ItsTheFirstProto/SceneProtoV2.unity
   isLoaded: 1
   isActive: 1
