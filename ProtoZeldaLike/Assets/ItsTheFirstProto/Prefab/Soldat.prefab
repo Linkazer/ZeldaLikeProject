@@ -55,10 +55,10 @@ GameObject:
   - component: {fileID: 4474159747129934}
   - component: {fileID: 212149415756584420}
   - component: {fileID: 50591862574729666}
-  - component: {fileID: 61626591543281634}
   - component: {fileID: 114059766296147176}
   - component: {fileID: 114689399212267414}
   - component: {fileID: 114889425172561032}
+  - component: {fileID: 58418291475393582}
   m_Layer: 9
   m_Name: Soldat
   m_TagString: Ennemis
@@ -182,7 +182,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473984337609936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43, y: 3.4, z: 0}
+  m_LocalPosition: {x: 69.93799, y: 46.161507, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4316375714646956}
@@ -367,8 +367,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 9
---- !u!61 &61626591543281634
-BoxCollider2D:
+--- !u!58 &58418291475393582
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -379,19 +379,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007545948, y: 0.14}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.14, y: 1.14}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.06}
   serializedVersion: 2
-  m_Size: {x: 1.1358652, y: 0.29001808}
-  m_EdgeRadius: 0
+  m_Radius: 0.3
 --- !u!61 &61836041489260264
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -616,7 +606,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2023377465
   m_SortingLayer: 1
-  m_SortingOrder: -340
+  m_SortingOrder: -4616
   m_Sprite: {fileID: 21300000, guid: aee1dbe6f27b4f04a9e49bc0edaa8526, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
