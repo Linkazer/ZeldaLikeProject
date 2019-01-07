@@ -290,6 +290,11 @@ Prefab:
       propertyPath: cameraBounds
       value: 
       objectReference: {fileID: 369191033}
+    - target: {fileID: 114820129052666540, guid: 30c648304ca47824e9bb994998630c26,
+        type: 2}
+      propertyPath: displayGridGizmos
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30c648304ca47824e9bb994998630c26, type: 2}
   m_IsPrefabAsset: 0
@@ -1547,6 +1552,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldat (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114889425172561032, guid: 54cf65c35771dc04ba3d746b7fc19583,
+        type: 2}
+      propertyPath: isAgressive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54cf65c35771dc04ba3d746b7fc19583, type: 2}
   m_IsPrefabAsset: 0
@@ -2426,7 +2436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1639844514
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3193,7 +3203,7 @@ Prefab:
     - target: {fileID: 114889425172561032, guid: 54cf65c35771dc04ba3d746b7fc19583,
         type: 2}
       propertyPath: isAgressive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114889425172561032, guid: 54cf65c35771dc04ba3d746b7fc19583,
         type: 2}

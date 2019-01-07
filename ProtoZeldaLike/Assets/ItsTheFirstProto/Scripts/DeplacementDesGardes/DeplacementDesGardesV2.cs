@@ -98,6 +98,11 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
                 attackCooldown = maxAttackCooldown;
             }
         }
+        else if (sawPlayer) //Vérifie s'il a vue un joueur
+        {
+            StartCoroutine(waitHere(2));
+            lastKnownPosition = armyLocation.position;
+        }
         else if (eardSomething && !isAfraid) //Vérifie si le garde a entendu quelque chose
         {
             speed = normalSpeed;
@@ -113,11 +118,6 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
                 StartCoroutine(waitHere(5));
                 isTargetSeen = false;
             }
-        }
-        else if(sawPlayer) //Vérifie s'il a vue un joueur
-        {
-            StartCoroutine(waitHere(2));
-            lastKnownPosition = armyLocation.position;
         }
         else if (canMove) //Vérifie que le garde peut bouger
         {
