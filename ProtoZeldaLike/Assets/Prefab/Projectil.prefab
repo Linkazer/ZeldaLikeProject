@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114310777398152682}
   m_Layer: 0
   m_Name: Projectil
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   dmg: 1
+  doesHitWall: 0
 --- !u!114 &114401798950795288
 MonoBehaviour:
   m_ObjectHideFlags: 1

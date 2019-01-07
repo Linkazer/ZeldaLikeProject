@@ -42,6 +42,8 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
 
     void Start()
     {
+
+
         nombreDePositionDuTour = tourDeGarde.Length;
         actuelPositionDuTour = 0;
 
@@ -199,7 +201,7 @@ public class DeplacementDesGardesV2 : MonoBehaviour {
         Vector3 currentWaypoint = path[0];
         while (true)
         {
-            if (Vector2.Distance(currentWaypoint, currentPosition) <= 0.5f)
+            if (Vector2.Distance(currentWaypoint, currentPosition) <= 0.1f)
             {
                 targetIndex++;
                 if (targetIndex >= path.Length)

@@ -12,7 +12,10 @@ public class MakeDamageScript : MonoBehaviour {
 
     private void OnEnable()
     {
-        StartCoroutine(TimeAttack());
+        if (gameObject.tag != "Projectile")
+        {
+            StartCoroutine(TimeAttack());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

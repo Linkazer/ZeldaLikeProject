@@ -469,6 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 1
   dmg: 1
+  doesHitWall: 0
 --- !u!114 &114689399212267414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -580,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd4e0e848468234bac652da24148251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshResolution: 0.8
+  meshResolution: 0.5
 --- !u!212 &212149415756584420
 SpriteRenderer:
   m_ObjectHideFlags: 1
