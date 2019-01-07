@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MakeDamageScript : MonoBehaviour {
 
-    public bool isEnemy = true;
+    public int ownType;
     public float dmg;
     public bool doesHitWall = false;
+    public Cristal cristalType;
 
     // Use this for initialization
 
@@ -22,7 +23,7 @@ public class MakeDamageScript : MonoBehaviour {
     {
         if(collision.tag == "Health")
         {
-            if(collision.gameObject.GetComponent<HealthScript>().isEnemy != isEnemy || gameObject.tag == "CreatureWeapon")
+            if(collision.gameObject.GetComponent<HealthScript>().ownType != ownType || ownType == 3)
             {
                 collision.gameObject.GetComponent<HealthScript>().TakeDamage(dmg);
             }

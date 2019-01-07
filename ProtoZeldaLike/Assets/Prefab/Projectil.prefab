@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e16e26d0cbf53349b4f93f7daa57551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnemy: 0
+  ownType: 1
   dmg: 1
   doesHitWall: 0
 --- !u!114 &114401798950795288
@@ -105,9 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33b8245e3d21064484cc3132818445a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 12
+  maxSpeed: 20
   portee: 15
-  speed: 12
+  speed: 20
   currentPortee: 0
   isSound: 1
   isLight: 0

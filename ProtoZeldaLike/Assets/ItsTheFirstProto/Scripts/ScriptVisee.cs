@@ -9,6 +9,7 @@ public class ScriptVisee : MonoBehaviour {
     public GameObject prefabCristal;
 
     public float maxCooldown = 2f;
+    private float cooldown = 0;
 
     private float chargingAttack = 0;
     public float maxChargeAttack = 3f;
@@ -17,27 +18,39 @@ public class ScriptVisee : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetAxis("Y")>0 && chargingAttack<maxChargeAttack)
+        if(Input.GetAxis("Y")>0 && chargingAttack<maxChargeAttack && cooldown >= maxCooldown)
         {
-            chargingAttack += 3*Time.deltaTime;
+            chargingAttack += 5*Time.deltaTime;
+        }
+        else if(cooldown<maxCooldown)
+        {
+            cooldown += Time.deltaTime;
         }
 
         if(Input.GetAxis("Y")<=0 && chargingAttack > 0)
         {
-            ProjectilDeplacement projScript = Instantiate(prefabCristal, transform.position + transform.forward * 1.0f, transform.rotation).GetComponent<ProjectilDeplacement>();
-            projScript.velocity = new Vector2(-Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2")).normalized;
-            projScript.speed = (chargingAttack / maxChargeAttack) * projScript.maxSpeed;
-            projScript.currentPortee = (projScript.portee / projScript.maxSpeed) * projScript.speed;
+            Vector2 velocity = new Vector2(-Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2")).normalized;
+            if (!(Mathf.Abs(velocity.x) < 0.1f && Mathf.Abs(velocity.y) < 0.1f))
+            {
+                ProjectilDeplacement projScript = Instantiate(prefabCristal, transform.position + transform.forward * 1.0f, transform.rotation).GetComponent<ProjectilDeplacement>();
+                float speed = (chargingAttack / maxChargeAttack) * projScript.maxSpeed;
+                if (speed < 5)
+                {
+                    speed = 5;
+                }
+                float currentPortee = (projScript.portee / projScript.maxSpeed) * speed;
+                cooldown = 0;
+
+                projScript.velocity = velocity;
+                projScript.speed = speed;
+                projScript.currentPortee = currentPortee;
+            }
             chargingAttack = 0;
         }
     }
     
     private void OnWillRenderObject()
     {
-        if (Mathf.Abs(Input.GetAxis("Horizontal2"))>=0.2f && Mathf.Abs(Input.GetAxis("Vertical2")) >= 0.2f)
-        {
-            
-        }
         heading = Mathf.Atan2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
         transform.rotation = Quaternion.Euler(0f, 0f, heading * Mathf.Rad2Deg);
 

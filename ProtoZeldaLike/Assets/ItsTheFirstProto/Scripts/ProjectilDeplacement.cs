@@ -47,7 +47,6 @@ public class ProjectilDeplacement : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Ennemis")
         {
-            Debug.Log("TestDeplacementProjectile");
             EstDivertissant();
         }
     }

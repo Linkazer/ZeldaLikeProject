@@ -6,7 +6,7 @@ public class HealthScript : MonoBehaviour {
 
     public float maxHealth;
     private float currentHealth;
-    public bool isEnemy = true;
+    public int ownType;
 
 	// Use this for initialization
 	void Start () {
@@ -15,10 +15,17 @@ public class HealthScript : MonoBehaviour {
 	
 	public void TakeDamage(float dmgTaken)
     {
-        currentHealth -= dmgTaken;
-        if (currentHealth <= 0)
+        if (ownType != 4)
         {
-            IsDying();
+            currentHealth -= dmgTaken;
+            if (currentHealth <= 0)
+            {
+                IsDying();
+            }
+        }
+        else
+        {
+
         }
     }
 

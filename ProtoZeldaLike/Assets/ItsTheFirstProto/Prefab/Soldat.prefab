@@ -457,8 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e16e26d0cbf53349b4f93f7daa57551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnemy: 1
-  dmg: 1
+  ownType: 2
+  dmg: 3
   doesHitWall: 0
 --- !u!114 &114689399212267414
 MonoBehaviour:
@@ -507,8 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4029130eb1b54489c77fde7c5090e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  isEnemy: 1
+  maxHealth: 10
+  ownType: 2
 --- !u!114 &114796183832413642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd4e0e848468234bac652da24148251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshResolution: 0.5
+  meshResolution: 0.9
 --- !u!212 &212149415756584420
 SpriteRenderer:
   m_ObjectHideFlags: 1
